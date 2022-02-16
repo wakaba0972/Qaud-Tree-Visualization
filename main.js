@@ -8,7 +8,7 @@ let outerY = canvas.getBoundingClientRect().y
 
 var object = []
 function explore(x, y){
-    if(x < canvas.width && y < canvas.height){
+    if(x > 0 && x < canvas.width && y > 0 && y < canvas.height){
         for(let i = 0; i < 50; ++i) object.push(new ball(x, y))
     }
 }
@@ -20,7 +20,7 @@ window.addEventListener('mousedown', (event) => {
 
 let ROI = new rectangle(0, 0, 100, 100)
 window.addEventListener('mousemove', (event) => {
-    if(event.pageX > canvas.width || event.pageY > canvas.height) return
+    if(event.pageX > canvas.width + outerX || event.pageY > canvas.height + outerY || event.pageX < outerX || event.pageY < outerY) return
     ROI.x = (event.pageX - outerX) - ROI.w / 2
     ROI.y = (event.pageY - outerY) - ROI.h / 2
 })
