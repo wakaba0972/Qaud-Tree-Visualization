@@ -6,7 +6,7 @@ class ball{
         this.color = 'white'
         //this.color = 'rgba(' + rand(0, 255) +', ' + rand(0, 255) +', ' + rand(0, 255) + ', ' + 0.3 +')'
 
-        this.speed = 0//rand(1, 2)
+        this.speed = rand(1, 2)
         let angle = rand(0, Math.PI * 2)
 
         this.vx = Math.cos(angle) * this.speed

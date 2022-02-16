@@ -9,7 +9,7 @@ let outerY = canvas.getBoundingClientRect().y
 var object = []
 function explore(x, y){
     if(x < canvas.width && y < canvas.height){
-        for(let i = 0; i < 1; ++i) object.push(new ball(x, y))
+        for(let i = 0; i < 50; ++i) object.push(new ball(x, y))
     }
 }
 
