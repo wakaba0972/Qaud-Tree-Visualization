@@ -12,26 +12,25 @@ class rectangle{
     }
 
     intersectBall(ball){
+        //Rect中心座標
+        let rx = this.x + this.w / 2
+        let ry = this.y + this.h / 2
+
+        //以Rect中心為原點，將圓心映射至第一象限
+        let cx = Math.abs(ball.x - rx) + rx
+        let cy = Math.abs(ball.y - ry) + ry
+
+        //Rect中心至圓心的向量
+        let vx = cx - rx
+        let vy = cy - ry
+
+        //計算圓心至矩形的最短距離
+        let ax = vx - this.w / 2
+        ax = (ax > 0 ? ax : 0)
+        let ay = vy - this.h / 2
+        ay = (ay > 0 ? ay : 0)
         
-        let cx = this.x + this.w / 2;
-        let cy = this.y + this.h / 2;
-
-        let xDist = Math.abs(cx - ball.x);
-        let yDist = Math.abs(cy - ball.y);
-
-        // 塞選掉所有矩形外部
-        if (xDist > this.w / 2 + ball.r || yDist > this.h / 2 + ball.r) return false;
-
-        // 有在方形內的都算碰撞
-        if (xDist <= this.w / 2 || yDist <= this.h / 2) return true;
-
-        // 但還是會漏掉四個角的外側，所以再檢查四個角是否與圓發生碰撞
-        let edges = Math.pow(xDist - this.w / 2, 2) + Math.pow(yDist - this.h / 2, 2);
-        return edges <= ball.r * ball.r;
-        
-        /*
-        return !(this.x + this.w < ball.x - ball.r || this.x > ball.x + ball.r ||
-                this.y + this.h < ball.y - ball.r || this.y > ball.y + ball.r)*/
+        return Math.sqrt(ax ** 2 + ay ** 2) < ball.r
     }
 }
 
@@ -80,6 +79,7 @@ class quadtree{
 
     show(){
         ctx.beginPath()
+        //ctx.moveTo(this.region.x, this.region.y)
         ctx.rect(this.region.x, this.region.y, this.region.w, this.region.h)
         ctx.stroke()
     }
