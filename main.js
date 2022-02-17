@@ -55,7 +55,7 @@ window.addEventListener('resize', ()=>{
 
 window.addEventListener('mousedown', event => {
     ballNum += 50
-    ballNumShow.innerText = 'Ball Number: ' + ballNum
+    ballNumShow.innerText = 'Number of Particle: ' + ballNum
     explore(event.pageX - outerX, event.pageY - outerY)
 })
 
