@@ -80,7 +80,7 @@ class quadtree{
 
     show(){
         ctx.beginPath()
-        ctx.rect(this.region.x, this.region.y, this.region.x + this.region.w, this.region.y + this.region.h)
+        ctx.rect(this.region.x, this.region.y, this.region.w, this.region.h)
         ctx.stroke()
     }
 }
